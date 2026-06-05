@@ -11,26 +11,38 @@ class App(tk.Tk):
         super().__init__()
 
         self.title("MCI Projekt")
-        self.geometry("900x700")
+        self.attributes("-fullscreen", True)
+
+        self.header = tk.Frame(self)
+        self.header.pack(fill="x")
+
+        tk.Button(
+            self.header,
+            text="Beenden",
+            command=self.destroy
+        ).pack(side="right", padx=10, pady=10)
+
+        self.content = tk.Frame(self)
+        self.content.pack(fill="both", expand=True)
 
         self.show_main_menu()
 
     def clear_window(self):
-        for widget in self.winfo_children():
+        for widget in self.content.winfo_children():
             widget.destroy()
 
     def show_main_menu(self):
         self.clear_window()
-        MainMenu(self).pack(fill="both", expand=True)
+        MainMenu(self.content, self).pack(fill="both", expand=True)
 
     def show_eye_movement_screen(self):
         self.clear_window()
-        AugenBewegung(self).pack(fill="both", expand=True)
+        AugenBewegung(self.content, self).pack(fill="both", expand=True)
 
     def show_fitts_law_screen(self):
         self.clear_window()
-        FittsLaw(self).pack(fill="both", expand=True)
+        FittsLaw(self.content, self).pack(fill="both", expand=True)
 
     def show_analysis_screen(self):
         self.clear_window()
-        Analyse(self).pack(fill="both", expand=True)
+        Analyse(self.content, self).pack(fill="both", expand=True)

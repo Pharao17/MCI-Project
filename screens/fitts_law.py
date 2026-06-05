@@ -2,8 +2,8 @@ import tkinter as tk
 
 
 class FittsLaw(tk.Frame):
-    def __init__(self, app):
-        super().__init__(app)
+    def __init__(self, parent, app):
+        super().__init__(parent)
 
         tk.Label(self, text="Fitts' Law Aufgabe", font=("Arial", 24)).pack(pady=20)
 

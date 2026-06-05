@@ -2,10 +2,10 @@ import tkinter as tk
 
 
 class MainMenu(tk.Frame):
-    def __init__(self, app):
-        super().__init__(app)
+    def __init__(self, parent, app):
+        super().__init__(parent)
 
-        tk.Label(self, text="MCI Projekt", font=("Arial", 24)).pack(pady=30)
+        tk.Label(self, text="MCI Projekt", font=("Arial", 24)).pack(pady=50)
 
         tk.Button(
             self,
