@@ -33,16 +33,16 @@ class App(tk.Tk):
 
     def show_main_menu(self):
         self.clear_window()
-        MainMenu(self).pack(fill="both", expand=True)
+        MainMenu(self.content, self).pack(fill="both", expand=True)
 
     def show_eye_movement_screen(self):
         self.clear_window()
-        AugenBewegung(self).pack(fill="both", expand=True)
+        AugenBewegung(self.content, self).pack(fill="both", expand=True)
 
     def show_fitts_law_screen(self):
         self.clear_window()
-        FittsLaw(self).pack(fill="both", expand=True)
+        FittsLaw(self.content, self).pack(fill="both", expand=True)
 
     def show_analysis_screen(self):
         self.clear_window()
-        Analyse(self).pack(fill="both", expand=True)
+        Analyse(self.content, self).pack(fill="both", expand=True)
