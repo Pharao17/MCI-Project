@@ -1,5 +1,6 @@
 import tkinter as tk
 from .sakkaden import Sakkaden
+from .vergenzbewegung import Vergenzbewegung
 
 
 class AugenBewegung(tk.Frame):
@@ -34,6 +35,8 @@ class AugenBewegung(tk.Frame):
         animation_buttons.pack()
 
         self.sakkaden = Sakkaden(self.canvas)
+        self.vergenzbewegung = Vergenzbewegung(self.canvas)
+        self.active_animation = None
 
         tk.Button(
             animation_buttons,
@@ -43,7 +46,8 @@ class AugenBewegung(tk.Frame):
 
         tk.Button(
             animation_buttons,
-            text="Vergenzbewegung"
+            text="Vergenzbewegung",
+            command=self.start_vergenzbewegung
         ).pack(side="left", padx=20)
 
         tk.Button(
@@ -64,7 +68,19 @@ class AugenBewegung(tk.Frame):
         ).pack(pady=15)
 
     def start_sakkaden(self):
-        self.sakkaden.start()
+        self.start_animation(self.sakkaden)
+
+    def start_vergenzbewegung(self):
+        self.start_animation(self.vergenzbewegung)
+
+    def start_animation(self, animation):
+        if self.active_animation is not None:
+            self.active_animation.stop()
+
+        self.active_animation = animation
+        self.active_animation.start()
 
     def stop_animation(self):
-        self.sakkaden.stop()
+        if self.active_animation is not None:
+            self.active_animation.stop()
+            self.active_animation = None
