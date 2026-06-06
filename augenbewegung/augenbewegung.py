@@ -1,4 +1,5 @@
 import tkinter as tk
+from .folgebewegung import Folgebewegung
 from .sakkaden import Sakkaden
 from .vergenzbewegung import Vergenzbewegung
 
@@ -36,6 +37,7 @@ class AugenBewegung(tk.Frame):
 
         self.sakkaden = Sakkaden(self.canvas)
         self.vergenzbewegung = Vergenzbewegung(self.canvas)
+        self.folgebewegung = Folgebewegung(self.canvas)
         self.active_animation = None
 
         tk.Button(
@@ -52,7 +54,8 @@ class AugenBewegung(tk.Frame):
 
         tk.Button(
             animation_buttons,
-            text="Smooth Pursuit"
+            text="Smooth Pursuit",
+            command=self.start_folgebewegung
         ).pack(side="left", padx=20)
 
         tk.Button(
@@ -72,6 +75,9 @@ class AugenBewegung(tk.Frame):
 
     def start_vergenzbewegung(self):
         self.start_animation(self.vergenzbewegung)
+
+    def start_folgebewegung(self):
+        self.start_animation(self.folgebewegung)
 
     def start_animation(self, animation):
         if self.active_animation is not None:
