@@ -30,25 +30,31 @@ class AugenBewegung(tk.Frame):
         button_frame.pack(pady=20)
 
         #Buttons von anmachen der Animationen trennen
-        animation_buttons_frame = tk.Frame(button_frame)
-        animation_buttons_frame.pack()
+        animation_buttons = tk.Frame(button_frame)
+        animation_buttons.pack()
 
         self.sakkaden = Sakkaden(self.canvas)
 
         tk.Button(
-            animation_buttons_frame,
+            animation_buttons,
             text="Sakkaden",
             command=self.start_sakkaden
         ).pack(side="left", padx=20)
 
         tk.Button(
-            animation_buttons_frame,
+            animation_buttons,
             text="Vergenzbewegung"
         ).pack(side="left", padx=20)
 
         tk.Button(
-            animation_buttons_frame,
+            animation_buttons,
             text="Smooth Pursuit"
+        ).pack(side="left", padx=20)
+
+        tk.Button(
+            animation_buttons,
+            text="Animation stoppen",
+            command=self.stop_animation
         ).pack(side="left", padx=20)
 
         tk.Button(
@@ -59,3 +65,6 @@ class AugenBewegung(tk.Frame):
 
     def start_sakkaden(self):
         self.sakkaden.start()
+
+    def stop_animation(self):
+        self.sakkaden.stop()

@@ -29,6 +29,7 @@ class Sakkaden:
     def stop(self):
         # Die nächste Ausführung von animate wird sofort beendet.
         self.running = False
+        self.canvas.delete(self.point)
 
     def animate(self):
         # Animation nicht fortsetzen, wenn stop aufgerufen wurde.
