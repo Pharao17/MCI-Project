@@ -1,7 +1,7 @@
 import random
 import tkinter as tk
 
-from shortmemory.short_memory_logic import ShortMemoryTest
+from .short_memory_logic import ShortMemoryTest
 
 
 class ShortMemory(tk.Frame):
